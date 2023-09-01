@@ -1,6 +1,67 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { WiDaySunny, WiCloudy, WiRain, WiSnow, WiThunderstorm } from 'react-icons/wi';
 import './App.css';
+
+function getWeatherIcon(weatherCode) {
+  switch (weatherCode) {
+    case '01d':
+      return <WiDaySunny />;
+    case '01n':
+      return <WiDaySunny />;
+    case '02d':
+      return <WiCloudy />;
+    case '02n':
+      return <WiCloudy />;
+    case '03d':
+    case '03n':
+    case '04d':
+    case '04n':
+      return <WiCloudy />;
+    case '09d':
+    case '09n':
+    case '10d':
+    case '10n':
+      return <WiRain />;
+    case '13d':
+    case '13n':
+      return <WiSnow />;
+    case '11d':
+    case '11n':
+      return <WiThunderstorm />;
+    default:
+      return null;
+  }
+}
+
+function getWeatherBackgroundClass(weatherCode) {
+  switch (weatherCode) {
+    case '01d':
+    case '01n':
+      return 'weather-sunny';
+    case '02d':
+    case '02n':
+      return 'weather-cloudy';
+    case '03d':
+    case '03n':
+    case '04d':
+    case '04n':
+      return 'weather-cloudy';
+    case '09d':
+    case '09n':
+    case '10d':
+    case '10n':
+      return 'weather-rain';
+    case '13d':
+    case '13n':
+      return 'weather-snow';
+    case '11d':
+    case '11n':
+      return 'weather-thunderstorm';
+    default:
+      return 'weather-default'; // Default background class
+  }
+}
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
@@ -10,7 +71,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const apiKey = '3ec4a7cf1f19e18756476b82a0860caf';
   const [temperature, setTemperature] = useState(null);
-
 
   const fetchWeatherData = async () => {
     setIsLoading(true);
@@ -28,7 +88,6 @@ function App() {
       setIsLoading(false);
     }
   };
-  
 
   const toggleUnit = () => {
     if (unit === 'metric') {
@@ -38,7 +97,6 @@ function App() {
     }
     fetchWeatherData(); // Fetch weather data with the new unit
   };
-  
 
   useEffect(() => {
     // Fetch weather data when the component mounts (initial load)
@@ -46,31 +104,34 @@ function App() {
   }, []);
 
   return (
-<div className="container">
-  <div className="App">
-    <h1>Weather App</h1>
-    <input
-      type="text"
-      placeholder="Enter city"
-      value={city}
-      onChange={(e) => setCity(e.target.value)}
-    />
-    <button onClick={fetchWeatherData}>
-      {isLoading ? 'Loading...' : 'Get Weather'}
-    </button>
-    <button onClick={toggleUnit}>Toggle Unit</button>
-    <p>Unit: {unit === 'metric' ? 'Celsius' : 'Fahrenheit'}</p>
-    {error !== null && <p className="error-message">{error}</p>} {/* Display error message here */}
-    {weatherData && (
-      <div>
-        <h2>{weatherData.name}</h2>
-        <p>Temperature: {temperature !== null ? `${temperature}°${unit === 'metric' ? 'C' : 'F'}` : 'N/A'}</p>
-
-        <p>Weather: {weatherData.weather[0].main}</p>
+    <div className={`container ${getWeatherBackgroundClass(weatherData?.weather[0].icon)}`}>
+      <div className="App">
+        <h1>Weather App</h1>
+        <input
+          type="text"
+          placeholder="Enter city"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <button onClick={fetchWeatherData}>
+          {isLoading ? 'Loading...' : 'Get Weather'}
+        </button>
+        <button onClick={toggleUnit}>Toggle Unit</button>
+        <p>Unit: {unit === 'metric' ? 'Celsius' : 'Fahrenheit'}</p>
+        {error !== null && <p className="error-message">{error}</p>}
+        {weatherData && (
+          <div>
+            <h2>{weatherData.name}</h2>
+            <p>
+              Temperature: {temperature !== null ? `${temperature}${unit === 'metric' ? '°C' : '°F'}` : 'N/A'}
+            </p>
+            <p>
+              Weather: {weatherData.weather[0].main} {getWeatherIcon(weatherData.weather[0].icon)}
+            </p>
+          </div>
+        )}
       </div>
-    )}
-  </div>
-</div>
+    </div>
   );
 }
 
