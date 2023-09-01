@@ -4,7 +4,7 @@ import axios from 'axios';
 function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [city, setCity] = useState('');
-  const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
+  const apiKey = '3ec4a7cf1f19e18756476b82a0860caf';
 
   const fetchWeatherData = async () => {
     try {
