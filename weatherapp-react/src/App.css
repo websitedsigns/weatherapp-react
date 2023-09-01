@@ -93,6 +93,65 @@ button:last-child {
 }
 
 
+/* Styling for the current weather icon */
+.current-weather-icon {
+  font-size: 48px; /* Adjust the size as needed */
+  margin-top: 10px; /* Add margin for spacing */
+}
+
+/* Styling for the 5-day forecast section */
+.forecast {
+  margin-top: 20px; /* Add margin for spacing */
+}
+
+/* Styling for the forecast grid */
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust the column width as needed */
+  gap: 20px; /* Gap between grid items */
+}
+
+
+/* Styling for each forecast item in the grid */
+/* Styling for each forecast item in the grid */
+.forecast-item {
+  background-color: #f5f5f5; /* Background color for each day */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Padding for content within each day */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for a slight elevation effect */
+}
+
+/* Styling for the forecast day */
+.forecast-day {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Gap between forecast boxes */
+}
+
+/* Styling for each small square box */
+.forecast-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff; /* Background color for each box */
+  border-radius: 10px; /* Rounded corners for each box */
+  padding: 10px; /* Padding for content within each box */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for each box */
+  width: 100px; /* Adjust the width of each box as needed */
+}
+
+/* Styling for the forecast icon within each box */
+.forecast-icon {
+  font-size: 32px; /* Adjust the size of the weather icon */
+  margin: 10px 0; /* Add vertical margin for spacing */
+}
+
+/* Styling for the temperature within each box */
+.forecast-temperature {
+  font-size: 16px; /* Adjust the font size of the temperature */
+}
+
 
 
 /* Mobile styles */
