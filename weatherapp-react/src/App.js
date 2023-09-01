@@ -18,7 +18,11 @@ function App() {
     }
   };
 
+  const containerClassName = `container${weatherData ? ' with-margin' : ''}`;
+
+
   return (
+    <div className="container">
     <div className="App">
       <h1>Weather App</h1>
       <input
@@ -36,7 +40,10 @@ function App() {
         </div>
       )}
     </div>
+    </div>
   );
 }
 
 export default App;
+
+
