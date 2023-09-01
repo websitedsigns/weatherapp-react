@@ -8,10 +8,11 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [city, setCity] = useState('');
   const apiKey = '3ec4a7cf1f19e18756476b82a0860caf';
-
+  const [isLoading, setIsLoading] = useState(false);
 
 
   const fetchWeatherData = async () => {
+    setIsLoading(true); // Set loading to true when fetching starts
     try {
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
@@ -21,6 +22,8 @@ function App() {
     } catch (error) {
       console.error('Error fetching weather data:', error);
       setError('Error Fetching Weather Data. Please Check The City Name ');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -37,7 +40,9 @@ function App() {
         value={city}
         onChange={(e) => setCity(e.target.value)}
       />
-      <button onClick={fetchWeatherData}>Get Weather</button>
+      <button onClick={fetchWeatherData}>  
+        {isLoading ? 'Loading...' : 'Get Weather'}
+      </button>
     {error && <p className="error-message">{error}</p>} {/* Display error message here */}
     {weatherData && (
       <div>
