@@ -6,27 +6,50 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #7698cb; /* Light gray or pastel color */
   font-family: 'Roboto', sans-serif;
-  font-size: 10px;
+  font-size: 100px;
+  margin: 0; /* Remove default body margin */
 }
 
-/* Style for the main container */
+/* Center the container horizontally */
 .container {
-  background-color: #d6dae3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #b3cdb0;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-  
+  text-align: center; /* Center text inside the container */
 }
 
 /* Style for headings */
-h1, h2, h3 {
+h1 {
   color: #333; /* Dark gray for headings */
+  font-size: 36px; /* Adjust heading font size */
 }
 
-.with-margin {
-  margin-top: 2rem; /* Add margin to push content down */
+/* Style for input and buttons */
+.input-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Add spacing between input and buttons */
+}
+
+.input-buttons input {
+  padding: 10px; /* Adjust input padding */
+  font-size: 18px; /* Adjust input font size */
+}
+
+.input-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+/* Style for unit toggle button */
+button:last-child {
+  margin-top: 10px; /* Add space below the "Get Weather" button */
 }
 
 /* Style for error message */
@@ -34,6 +57,22 @@ h1, h2, h3 {
   color: #ff0000; /* Red color for error messages */
   font-weight: bold;
   margin-top: 10px;
+}
+
+/* Style for weather information */
+.weather-info {
+  margin-top: 20px; /* Add space between input/buttons and weather info */
+}
+
+/* Style for temperature */
+.temperature {
+  font-size: 24px; /* Adjust temperature font size */
+}
+
+/* Style for weather icon (make it larger) */
+.weather-info svg {
+  width: 100px; /* Adjust the width to make the icon larger */
+  height: 100px; /* Adjust the height to make the icon larger */
 }
 
 /* Style for loading indicator */
@@ -52,47 +91,16 @@ h1, h2, h3 {
   animation: spin 1s linear infinite;
   margin-right: 8px; /* Add some spacing */
 }
+
+
+
+
 /* Mobile styles */
 @media (max-width: 800px) {
-  /* Simplified header */
-  header {
-    text-align: center;
-  }
-
-
-  /* Card-based layout */
-  .weather-card {
-    margin: 10px;
-    padding: 15px;
-    background: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-  }
-
-  /* Larger fonts and icons */
-  h2, p {
-    font-size: 18px;
-  }
-
-  /* Larger buttons */
-  button {
-    font-size: 16px;
-    padding: 10px 20px;
-  }
-
-  /* Adjust spacing and margins */
-  .container {
-    padding: 20px;
-  }
-
-  /* Modern color scheme */
-  .weather-card {
-    background: #f5f5f5;
-  }
+  /* Add mobile-specific styles if needed */
 }
 
 /* Tablet and Desktop styles */
 @media (min-width: 769px) {
-  /* Tablet and desktop-specific styles */
-  /* You can add more detailed styles for larger screens here */
+  /* Add tablet and desktop-specific styles if needed */
 }

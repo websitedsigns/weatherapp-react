@@ -106,30 +106,46 @@ function App() {
   return (
     <div className={`container ${getWeatherBackgroundClass(weatherData?.weather[0].icon)}`}>
       <div className="App">
-        <h1>Weather App</h1>
-        <input
-          type="text"
-          placeholder="Enter city"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
-        <button onClick={fetchWeatherData}>
-          {isLoading ? 'Loading...' : 'Get Weather'}
-        </button>
-        <button onClick={toggleUnit}>Toggle Unit</button>
-        <p>Unit: {unit === 'metric' ? 'Celsius' : 'Fahrenheit'}</p>
-        {error !== null && <p className="error-message">{error}</p>}
-        {weatherData && (
-          <div>
-            <h2>{weatherData.name}</h2>
-            <p>
-              Temperature: {temperature !== null ? `${temperature}${unit === 'metric' ? '°C' : '°F'}` : 'N/A'}
-            </p>
-            <p>
-              Weather: {weatherData.weather[0].main} {getWeatherIcon(weatherData.weather[0].icon)}
-            </p>
+        <div className="center-content">
+          <h1>Weather App</h1>
+          <div className="input-buttons">
+            <div className="input-container">
+              <input
+                type="text"
+                placeholder="Enter city"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              />
+            </div>
+            <button onClick={fetchWeatherData}>
+              {isLoading ? 'Loading...' : 'Get Weather'}
+            </button>
+            <button onClick={toggleUnit} className="toggle-unit-button">
+              {unit === 'metric' ? '°C' : '°F'}
+            </button>
           </div>
-        )}
+          <p>Unit: {unit === 'metric' ? 'Celsius' : 'Fahrenheit'}</p>
+          {error !== null && <p className="error-message">{error}</p>}
+          {weatherData && (
+  <div className="weather-info">
+    <h2>{weatherData.name}</h2>
+    <div className="temperature">
+      <p>
+        {temperature !== null ? `${temperature.toFixed(1)}${unit === 'metric' ? '°C' : '°F'}` : 'N/A'}
+      </p>
+    </div>
+    <div className="weather-description">
+      <p>
+        Weather: {weatherData.weather[0].main}
+      </p>
+      <p>
+        {getWeatherIcon(weatherData.weather[0].icon)}
+      </p>
+    </div>
+  </div>
+)}
+          
+        </div>
       </div>
     </div>
   );
