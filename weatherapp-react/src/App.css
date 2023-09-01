@@ -29,3 +29,9 @@ h1, h2, h3 {
   margin-top: 2rem; /* Add margin to push content down */
 }
 
+/* Style for error message */
+.error-message {
+  color: #ff0000; /* Red color for error messages */
+  font-weight: bold;
+  margin-top: 10px;
+}
