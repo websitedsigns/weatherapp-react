@@ -52,3 +52,47 @@ h1, h2, h3 {
   animation: spin 1s linear infinite;
   margin-right: 8px; /* Add some spacing */
 }
+/* Mobile styles */
+@media (max-width: 800px) {
+  /* Simplified header */
+  header {
+    text-align: center;
+  }
+
+
+  /* Card-based layout */
+  .weather-card {
+    margin: 10px;
+    padding: 15px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+
+  /* Larger fonts and icons */
+  h2, p {
+    font-size: 18px;
+  }
+
+  /* Larger buttons */
+  button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  /* Adjust spacing and margins */
+  .container {
+    padding: 20px;
+  }
+
+  /* Modern color scheme */
+  .weather-card {
+    background: #f5f5f5;
+  }
+}
+
+/* Tablet and Desktop styles */
+@media (min-width: 769px) {
+  /* Tablet and desktop-specific styles */
+  /* You can add more detailed styles for larger screens here */
+}
