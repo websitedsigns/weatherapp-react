@@ -32,34 +32,7 @@ function getWeatherIcon(weatherCode) {
   }
 }
 
-function getWeatherBackgroundClass(weatherCode) {
-  switch (weatherCode) {
-    case '01d':
-    case '01n':
-      return 'weather-sunny';
-    case '02d':
-    case '02n':
-      return 'weather-cloudy';
-    case '03d':
-    case '03n':
-    case '04d':
-    case '04n':
-      return 'weather-cloudy';
-    case '09d':
-    case '09n':
-    case '10d':
-    case '10n':
-      return 'weather-rain';
-    case '13d':
-    case '13n':
-      return 'weather-snow';
-    case '11d':
-    case '11n':
-      return 'weather-thunderstorm';
-    default:
-      return 'weather-default';
-  }
-}
+
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
